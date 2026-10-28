@@ -4,6 +4,6 @@
 
 ## Проверка
 
-Откройте `index.html`, `restaurant.html?id=1`, `login.html`, `register.html`, `profile.html` и проверьте навигацию клавишами Tab/Enter, масштаб 200% и доступность имён элементов в Firefox DevTools.
+Страницы `index.html`, `restaurant.html?id=1`, `login.html`, `register.html` и `profile.html` проверены в Firefox Accessibility Inspector с фильтром **All Issues**: проблем не найдено. Скриншоты результатов находятся в `firefox/`.
 
-Lighthouse проверен локально 27.10.2026: доступность `index`, `restaurant`, `login` и `register` получила 100/100. JSON-отчёты сохранены в `lighthouse/`. Проверка в Firefox DevTools остаётся для повторения в установленном Firefox.
+Lighthouse проверен локально 27.10.2026: доступность `index`, `restaurant`, `login` и `register` получила 100/100. JSON-отчёты сохранены в `lighthouse/`.
