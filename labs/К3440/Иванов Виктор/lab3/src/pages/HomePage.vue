@@ -19,9 +19,20 @@ const found = computed(() => restaurants.value.filter(r => {
 onMounted(async () => { try { restaurants.value = (await api.get('/restaurants')).data; } catch (e) { error.value = message(e); } finally { loading.value = false; } });
 </script>
 <template>
-  <section class="hero mb-5"><p class="eyebrow">Ваш вечер начинается здесь</p><h1>Хорошие встречи случаются за столом</h1><p class="lead">Откройте новое любимое место, выберите удобное время и забронируйте столик за пару минут.</p><a class="btn btn-primary btn-lg" href="#search">Искать рестораны</a></section>
+  <section class="hero mb-5">
+    <div class="hero-copy">
+      <p class="hero-location">Санкт-Петербург</p>
+      <h1>Вечер начинается с места.</h1>
+      <p class="lead">Шесть ресторанов для встреч, которые хочется продлить. Выберите своё место и забронируйте столик.</p>
+      <a class="btn btn-primary btn-lg" href="#search">Выбрать ресторан</a>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <img class="hero-image" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="">
+      <span class="hero-caption">Встретимся за столом</span>
+    </div>
+  </section>
   <section id="search" aria-labelledby="search-title">
-    <div class="d-flex flex-wrap justify-content-between align-items-end gap-2 mb-3"><div><p class="eyebrow mb-1">Подборка для вас</p><h2 id="search-title" class="section-title mb-0">Найдите свой ресторан</h2></div><p class="mb-0" aria-live="polite">Найдено ресторанов: {{ found.length }}</p></div>
+    <div class="section-heading"><h2 id="search-title" class="section-title">Куда сегодня?</h2><p class="result-count" aria-live="polite">Найдено ресторанов: {{ found.length }}</p></div>
     <SearchFilters v-model="filters" />
     <p v-if="loading" role="status">Загрузка ресторанов…</p>
     <p v-else-if="error" class="alert alert-danger" role="alert">Не удалось загрузить рестораны: {{ error }}. Запустите API-сервер.</p>
